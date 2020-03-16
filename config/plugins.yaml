@@ -16,7 +16,9 @@
 - repo: justinmk/vim-gtfo
 - { repo: wellle/visual-split.vim, merged: 0 }
 - { repo: wellle/targets.vim, merged: 0 }
-- { repo: rafi/awesome-vim-colorschemes, merged: 0 }
+- repo: rafi/awesome-vim-colorschemes
+  merged: 0
+  hook_add: let g:colors_name = 'solarized8'
 
 - repo: christoomey/vim-tmux-navigator
   if: "! (has('win32') || has('win64'))"
@@ -187,6 +189,9 @@
 - { repo: chr4/nginx.vim, on_ft: nginx }
 - { repo: IN3D/vim-raml, on_ft: raml }
 - { repo: towolf/vim-helm, on_ft: helm }
+- repo: numirias/semshi
+  on_ft: python
+  hook_source: source $VIM_PATH/config/plugins/semshi.vim
 
 - repo: pearofducks/ansible-vim
   on_ft: [ ansible, ansible_hosts, jinja2 ]

@@ -7,6 +7,8 @@ call defx#custom#option('_', {
 	\ 'split': 'vertical',
 	\ 'direction': 'topleft',
 	\ 'show_ignored_files': 0,
+	\ 'toggle': 1,
+	\ 'resume': 1,
 	\ 'columns': 'indent:git:icons:filename',
 	\ 'root_marker': ' ',
 	\ 'ignored_files':
@@ -43,7 +45,7 @@ augroup user_plugin_defx
 	autocmd!
 
 	" Delete defx if it's the only buffer left in the window
-	autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
+	" autocmd WinEnter * if &filetype == 'defx' && winnr('$') == 1 | bdel | endif
 
 	" Move focus to the next window if current buffer is defx
 	autocmd TabLeave * if &filetype == 'defx' | wincmd w | endif
@@ -85,7 +87,7 @@ function! s:defx_toggle_tree() abort
 	if defx#is_directory()
 		return defx#do_action('open_or_close_tree')
 	endif
-	return defx#do_action('multi', ['drop', 'quit'])
+	return defx#do_action('multi', ['drop'])
 endfunction
 
 function! s:defx_handle_dirchanged(event)
@@ -136,9 +138,9 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> l     <SID>defx_toggle_tree()
 	nnoremap <silent><buffer><expr> h     defx#do_action('close_tree')
 	nnoremap <silent><buffer><expr> t     defx#do_action('open_tree_recursive')
-	nnoremap <silent><buffer><expr> st    defx#do_action('multi', [['drop', 'tabnew'], 'quit'])
-	nnoremap <silent><buffer><expr> sg    defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
-	nnoremap <silent><buffer><expr> sv    defx#do_action('multi', [['drop', 'split'], 'quit'])
+	nnoremap <silent><buffer><expr> st    defx#do_action('multi', [['drop', 'tabnew']])
+	nnoremap <silent><buffer><expr> sv    defx#do_action('multi', [['drop', 'vsplit']])
+	nnoremap <silent><buffer><expr> sh    defx#do_action('multi', [['drop', 'split']])
 	nnoremap <silent><buffer><expr> P     defx#do_action('open', 'pedit')
 	nnoremap <silent><buffer><expr> y     defx#do_action('yank_path')
 	nnoremap <silent><buffer><expr> x     defx#do_action('execute_system')

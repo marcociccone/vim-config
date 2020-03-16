@@ -17,9 +17,9 @@ if empty(s:package_manager) || s:package_manager ==# 'none'
 endif
 
 " Enables 24-bit RGB color in the terminal
-if has('termguicolors') && $COLORTERM =~# 'truecolor\|24bit'
-	set termguicolors
-endif
+" if has('termguicolors') && $COLORTERM =~# 'truecolor\|24bit'
+set termguicolors
+" endif
 
 " Disable vim distribution plugins
 
@@ -92,6 +92,8 @@ function! s:main()
 		endfor
 
 		" Python interpreter settings
+		let g:python3_host_prog = '~/miniconda3/bin/python3'
+		let g:python2_host_prog = '/usr/bin/python2.7'
 		if has('nvim')
 			" Try using pyenv virtualenv called 'neovim'
 			let l:virtualenv = ''

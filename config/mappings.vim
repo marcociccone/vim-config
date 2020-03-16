@@ -127,6 +127,12 @@ cnoremap <C-l> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
+" Move between windows with alt+arrows
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
 " Switch history search pairs, matching my bash shell
 cnoremap <expr> <C-p>  pumvisible() ? "\<C-p>" : "\<Up>"
 cnoremap <expr> <C-n>  pumvisible() ? "\<C-n>" : "\<Down>"
